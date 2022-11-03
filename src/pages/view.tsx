@@ -1,7 +1,7 @@
 import {Link, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {PlansInt} from "../interfaces/plansInt";
-import {Container, Divider, Fab, Grid, Typography} from "@mui/material";
+import {Container, Fab, Grid, Typography} from "@mui/material";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import EditIcon from '@mui/icons-material/Edit';
 import React from "react";
@@ -9,11 +9,9 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import {DELETE} from "../redux/slices/PlansSlice";
 const View = ()=>{
     const {id} = useParams() ;
-    console.log(id);
     const dispatcher = useDispatch() ;
     const plans : PlansInt[] = useSelector((state :any) => state.plans) ;
     const selectedPlan : PlansInt | undefined = plans.find((plan:PlansInt)=>Number(plan.id)===Number(id));
-    console.log(plans , selectedPlan);
     const deletePlan = ()=>{
         dispatcher(DELETE(plans.findIndex((plan)=>plan.id===Number(id)))) ;
     }

@@ -11,7 +11,6 @@ const selectedDate = createSlice({
     initialState ,
     reducers : {
         SELECT_DATE : (state : selected , action : PayloadAction<selected>)=>{
-            console.log(action.payload)
             return action.payload ;
         }
     }

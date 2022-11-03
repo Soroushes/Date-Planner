@@ -20,7 +20,6 @@ const AddPlans = ()=>{
     const dispatcher = useDispatch() ;
     const {showDate} = useSelector((state : any) => state.selectedDate) ;
     const editBtn = ()=>{
-        console.log(plans)
         const edited = plans.map((plan)=>{
             if (Number(plan.id)===Number(id)){
                 return{

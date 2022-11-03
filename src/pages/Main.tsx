@@ -27,7 +27,7 @@ const Main : React.FC = ()=>{
         <Container className={'h-100'} disableGutters maxWidth={false}>
             <Grid className={'h-100'} container alignContent={'space-between'}>
                 <Grid item xs={12}>
-                    <Container className={'h-100'} disableGutters maxWidth={'md'}>
+                    <Container className={'h-100'} disableGutters maxWidth={'sm'}>
                         <Calendar defaultView={'month'} className={'w-100'} onChange={setValue} value={value} />
                     </Container>
                 </Grid>

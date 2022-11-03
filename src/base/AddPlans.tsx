@@ -90,7 +90,7 @@ const AddPlans = ()=>{
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <TimePicker
                                 className={'w-100'}
-                                label="start Time"
+                                label="End Time"
                                 value={endTime}
                                 onChange={setEndTime}
                                 renderInput={(params) => <TextField {...params} />}

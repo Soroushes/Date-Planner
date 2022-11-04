@@ -7,6 +7,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import React from "react";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import {DELETE} from "../redux/slices/PlansSlice";
+import NotFound from "../base/NotFound";
 const View = ()=>{
     const {id} = useParams() ;
     const dispatcher = useDispatch() ;
@@ -55,7 +56,7 @@ const View = ()=>{
                     </Grid>
                 </Container>
             </div>
-        </Container> : <h1 className={'text-white text-center'}>404 NotFound</h1>
+        </Container> : <NotFound/>
     )
 }
 export default View ;

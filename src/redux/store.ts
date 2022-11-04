@@ -6,5 +6,9 @@ export  const store = configureStore({
     reducer : {
         selectedDate : selectedDate ,
         plans : plansSlice
-    }
+    },
+    middleware : (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
 })

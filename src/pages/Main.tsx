@@ -13,30 +13,21 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 ];
 const Main : React.FC = ()=>{
     const dispatcher = useDispatch() ;
-    const {showDate} = useSelector((state : any) => state.selectedDate) ;
-    const [value, setValue] = useState(new Date());
-
-    const dispatchData = (data : Date)=>{
-        setValue(data) ;
-        const date : number = data.getDate();
-        const month : string = monthNames[data.getMonth()] ;
-        const year : number = data.getFullYear();
-        const fullDate : string = date+' '+ month+' '+ year ;
-        dispatcher(SELECT_DATE({showDate : fullDate})) ;
-    }
+    const {date} = useSelector((state : any) => state.selectedDate) ;
+    const [value, setValue] = useState(date || new Date());
+    const day : number = value.getDate();
+    const month : string = monthNames[value.getMonth()] ;
+    const year : number = value.getFullYear();
+    const fullDate : string = day+' '+ month+' '+ year ;
     useEffect(()=>{
-        const date : number = value.getDate();
-        const month : string = monthNames[value.getMonth()] ;
-        const year : number = value.getFullYear();
-        const fullDate : string = date+' '+ month+' '+ year ;
-        if (!showDate)dispatcher(SELECT_DATE({showDate : fullDate})) ;
-        },[])
+        dispatcher(SELECT_DATE({showDate : fullDate , date : value})) ;
+        },[value])
     return(
         <Container className={'h-100'} disableGutters maxWidth={false}>
             <Grid className={'h-100'} container alignContent={'space-between'}>
                 <Grid item xs={12}>
                     <Container className={'h-100'} disableGutters maxWidth={'sm'}>
-                        <Calendar defaultView={'month'} className={'w-100'} onChange={dispatchData} value={value} />
+                        <Calendar defaultView={'month'} className={'w-100'} onChange={setValue} value={value} />
                     </Container>
                 </Grid>
                 <Grid item xs={12}>

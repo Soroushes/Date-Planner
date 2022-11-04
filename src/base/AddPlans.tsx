@@ -12,8 +12,8 @@ const AddPlans = ()=>{
     const navigator = useNavigate() ;
     const plans : PlansInt[] = useSelector((state : any)=>state.plans);
     const plan : PlansInt | undefined = id ? plans.find((plan:PlansInt)=>Number(plan.id)===Number((id))) : undefined;
-    const [startTime , setStartTime] = useState<Dayjs | any>('') ;
-    const [endTime , setEndTime] = useState<Dayjs | any>('') ;
+    const [startTime , setStartTime] = useState<Dayjs | any>(plan?.fullStartTime || '') ;
+    const [endTime , setEndTime] = useState<Dayjs | any>(plan?.fullEndTime || '') ;
     const [name , setName] = useState<String>(plan?.name || '') ;
     const [location , setLocation] = useState<String>(plan?.location || '') ;
     const [description , setDescription] = useState<String>(plan?.description || '') ;
@@ -26,6 +26,8 @@ const AddPlans = ()=>{
                     id ,
                     date : showDate,
                     name,
+                    fullStartTime : startTime ,
+                    fullEndTime : endTime,
                     location ,
                     description ,
                     startTime : {hours : startTime.$H , minutes: startTime.$m},
@@ -48,13 +50,15 @@ const AddPlans = ()=>{
         if (edit){
             editBtn() ;
             return;
-        };
+        }
         dispatcher(ADD({
             id : Math.floor(Math.random()*100000) ,
             date : showDate,
             name,
             location ,
             description ,
+            fullStartTime : startTime ,
+            fullEndTime : endTime,
             startTime : {hours : startTime.$H , minutes: startTime.$m},
             endTime : {hours : endTime.$H , minutes : endTime.$m}
         }))

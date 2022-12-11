@@ -9,8 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {SELECT_DATE} from "../redux/slices/selectedDate";
 import BottomNav from "../containers/bottomNav";
 const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-];
+    "July", "August", "September", "October", "November", "December"];
 const Main : React.FC = ()=>{
     const dispatcher = useDispatch() ;
     const {date} = useSelector((state : any) => state.selectedDate) ;
